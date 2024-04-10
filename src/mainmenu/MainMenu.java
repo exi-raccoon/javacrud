@@ -10,6 +10,7 @@ import crud.TableRead;
 import db.ConnectionClass;
 
 public class MainMenu {
+	//utilisation du scanner pour capter les input de la console
 	private static final Scanner scanner = new Scanner(System.in);
 
 	public static void mainMenu() {
@@ -69,6 +70,7 @@ public class MainMenu {
 				System.out.println("Promotion id to update : ");
 				int y = scanner.nextInt();
 				System.out.println("Promotion's new name : ");
+				//honnêtement si je rajoute pas cette variable vide ça saute un input mais je sais pas pourquoi
 				String vide = scanner.nextLine();
 				String p = scanner.nextLine();
 				RowUpdate.updatePromById(con, p, y);
@@ -115,6 +117,7 @@ public class MainMenu {
 			case 3:
 				System.out.println("Promotion id : ");
 				int x = scanner.nextInt();
+				//honnêtement si je rajoute pas cette variable vide ça saute un input mais je sais pas pourquoi #2
 				String vide = scanner.nextLine();
 				System.out.println("First name : ");
 				String y = scanner.nextLine();
@@ -126,6 +129,7 @@ public class MainMenu {
 				String b = scanner.nextLine();
 				System.out.println("Is the new apprenant a délégué ? f/t ");
 				String c = scanner.nextLine();
+				//pas besoin de taper False ou True, mais juste f ou t
 				if (c.equals("f")) {
 					Boolean boolDel = false;
 					RowInsert.createApprenant(con, x, y, z, a, b, boolDel);

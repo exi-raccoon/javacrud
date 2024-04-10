@@ -8,6 +8,7 @@ import java.sql.Statement;
 public class TableRead {
 	private static final String SELECT_APPRENANT = "SELECT prom.name AS promotion_name, app.id_apprenant, app.first_name, app.last_name, app.email, app.phone, app.nbr_abs, app.delegue FROM apprenant app JOIN promotion prom ON prom.id_promotion = app.promotion_id";
 
+	// fonction pour ne pas réécrire les colonnes à chaque fois
 	public static void showTablesApp(ResultSet result, ResultSetMetaData rsmd) throws Exception {
 		System.out.println(rsmd.getColumnLabel(1) + "\t\t" + rsmd.getColumnName(2) + "\t\t" + rsmd.getColumnName(3)
 				+ "\t\t" + rsmd.getColumnName(4) + "\t\t" + rsmd.getColumnName(5) + "\t\t" + rsmd.getColumnName(6)
@@ -25,7 +26,8 @@ public class TableRead {
 			System.out.println(result.getString(8));
 		}
 	}
-	
+
+	// fonction pour ne pas réécrire les colonnes à chaque fois
 	public static void showTablesProm(ResultSet result, ResultSetMetaData rsmd) throws Exception {
 		System.out.println(rsmd.getColumnName(1) + "\t\t" + rsmd.getColumnName(2));
 		System.out.println("--------------------------------");
@@ -35,6 +37,7 @@ public class TableRead {
 		}
 	}
 
+//SELECT des infos apprenants + nom de la formation en passant par un JOIN
 	public static void readApprenant(Connection con) {
 		Statement stm;
 		ResultSet result;
@@ -49,7 +52,7 @@ public class TableRead {
 			System.out.println(e.getMessage());
 		}
 	}
-
+//même SELECT que au-dessus mais avec un orderby possible par chaque colonne
 	public static void readAppOrderBy(Connection con, String column, String orderBy) {
 		Statement stm;
 		ResultSet result;
@@ -65,7 +68,7 @@ public class TableRead {
 			System.out.println(e.getMessage());
 		}
 	}
-
+//SELECT des apprenant en fonction de l'id de la promotion
 	public static void readAppByProm(Connection con, Integer id) {
 		Statement stm;
 		ResultSet result;
@@ -80,7 +83,7 @@ public class TableRead {
 			System.out.println(e.getMessage());
 		}
 	}
-
+//SELECT des infos apprenant en fonction de son id
 	public static void readAppByAppId(Connection con, Integer id) {
 		Statement stm;
 		ResultSet result;
@@ -95,7 +98,7 @@ public class TableRead {
 			System.out.println(e.getMessage());
 		}
 	}
-
+//SUM des abscences par promotion
 	public static void readNbrAbsByProm(Connection con) {
 		Statement stm;
 		ResultSet result;
@@ -105,12 +108,12 @@ public class TableRead {
 			String query = "SELECT prom.name, SUM(app.nbr_abs) AS nbr_abs FROM apprenant app JOIN promotion prom ON prom.id_promotion = app.promotion_id GROUP BY 1;";
 			result = stm.executeQuery(query);
 			rsmd = result.getMetaData();
-			showTablesProm(result,rsmd);
+			showTablesProm(result, rsmd);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
-
+//SELECT id promotion + nom promotion
 	public static void readPromotion(Connection con) {
 		Statement stm;
 		ResultSet result;
@@ -121,7 +124,7 @@ public class TableRead {
 			String query = "SELECT * FROM promotion ;";
 			result = stm.executeQuery(query);
 			rsmd = result.getMetaData();
-			showTablesProm(result,rsmd);
+			showTablesProm(result, rsmd);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

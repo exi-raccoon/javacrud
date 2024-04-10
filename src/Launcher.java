@@ -11,6 +11,7 @@ public class Launcher {
 		DbInit.TableInit(con);
 		// initialisation des datas de la base de données -> a commenté si pas besoin
 		DbInit.InsertInit(con);
+		//affichage du menu
 		MainMenu.mainMenu();
 	}
 }

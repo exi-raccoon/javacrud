@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 
 public class RowUpdate {
+	//update du nbr d'abscence en fonction du id de l'apprenant
 	public static void updateApprenantById(Connection con, Integer newData, Integer id) {
 		Statement stm;
 		
@@ -16,7 +17,7 @@ public class RowUpdate {
 			e.printStackTrace();
 		}
 	}
-	
+	//changer nom d'une promotion
 	public static void updatePromById(Connection con, String newData, Integer id) {
 		Statement stm;
 		

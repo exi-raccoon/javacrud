@@ -7,11 +7,13 @@ import crud.RowInsert;
 public class DbInit {
 
 	public static void TableInit(Connection con) {
+		//initialisation des tables
 		CreateTable.createTableProm(con);
 		CreateTable.createTableApprenant(con);
 	}
 
 	public static void InsertInit(Connection con) {
+		//insert de données de base pour ne pas travailler sur rien
 		RowInsert.createPromotion(con, "DI22");
 		RowInsert.createPromotion(con, "DI23");
 		RowInsert.createPromotion(con, "FRIR23");
